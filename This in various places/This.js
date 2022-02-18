@@ -108,4 +108,18 @@ const outerArrow = {
 
 outerArrow.print();
 
+const personName = {
+    first: "Tim",
+    second: "mclaren"
+}
+
+const printName = {
+    display: function(greetings, salary) {
+        return `${this.first} ${this.second} ${greetings} ${salary}`;
+    }
+}
+
+console.log(printName.display.call(personName, "has earned", "20000 rupees"));
+console.log(printName.display.apply(personName, ["will earn", "25000 rupees in future"]));
+console.log(printName.display.bind(personName)("has failed to earn", "passion"));
 
