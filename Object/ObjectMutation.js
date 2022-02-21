@@ -18,7 +18,7 @@ const place = {
     }
 }
 
-const shallowCopy = {...place};
+const shallowCopy = { ...place };
 shallowCopy.name = "Villupuram";
 console.log(place, shallowCopy);
 
@@ -55,7 +55,7 @@ console.log(material); //nested property changed
 
 const deepFreeze = (obj) => {
     Object.keys(obj).forEach(property => {
-        if(typeof obj[property] === 'object' && !Object.isFrozen(obj[property])) {
+        if (typeof obj[property] === 'object' && !Object.isFrozen(obj[property])) {
             deepFreeze(obj[property])
         }
     })
