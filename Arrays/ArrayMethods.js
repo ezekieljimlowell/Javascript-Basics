@@ -114,12 +114,79 @@ console.log(dup1 === duplicate);
 
 console.log(Array.from(li, li => li.textContent = "dreamer"));
 
-const amp = Array.from({ length: 5}, n => 2);
+const amp = Array.from({ length: 5 }, n => 2);
 console.log(amp);
 
 //Array.of
 const arrayOf = Array.of("rectangle", "square", "rhombus", "pyramid", "hexagon");
 console.log(arrayOf);
 
+//copyWithin
+console.log(arrayOf.copyWithin(3, 0, 1));
 
+//entries
+const ent = arrayOf.entries();
+console.log(ent, ent.next().value);
+
+//flat
+const twoDArray = [1, 2, 4, 3, [4, 534, 332]];
+const flattened = twoDArray.flat();
+console.log(flattened, twoDArray);
+
+//recursion
+function recursiveFlat(arr) {
+    return arr.reduce((acc, current) => Array.isArray(current) ? acc.concat(recursiveFlat(current)) : acc.concat(current), [])
+}
+
+console.log(recursiveFlat(twoDArray));
+
+//flatmap
+const mapping = twoDArray.map(arr => [arr]);
+console.log(mapping);
+
+const flatMapping = twoDArray.flatMap(arr => [arr]);
+console.log(flatMapping);
+
+//keys
+const keyArray = [3, 4, 57, 5, 2];
+const keys = keyArray.keys();
+console.log(keys);
+for (let key of keys) {
+    console.log(key)
+}
+
+//locale string
+const timeArray = ["hi", new Date("12 Aug 2000 12:30:00 UTC")];
+console.log(timeArray.toLocaleString("en", { timeZone: "UTC" }));
+
+const numbArray = [32, 12, 43, 123, 424];
+const value3 = numbArray.values();
+console.log(value3.next().value);
+for (let val of value3) { //forOf iterates over iterable values of array Object
+    console.log(val)
+}
+
+const obj = {
+    a: 1,
+    b: 2
+}
+
+for (let i in obj) { //in iterates over enumerable properties of object
+    console.log(obj[i])
+}
+
+const elementIterable = document.getElementById("iterator");
+const orderedList = document.createElement("ol");
+elementIterable.appendChild(orderedList);
+const arr3 = ["tim", "mcrath", "mclaren"];
+const iter = arr3[Symbol.iterator]();
+
+for (let i of iter) {
+    const ele1 = document.createElement("li");
+    ele1.textContent = i;
+    orderedList.appendChild(ele1);
+}
+
+//instanceOf
+console.log(arr3 instanceof Array);
 
