@@ -15,3 +15,18 @@ const promise2 = new Promise((_, reject) => reject("rejected"));
 
 promise1.then(val => console.log(val));
 promise2.catch(err => console.log(err));
+
+const URL = "https://jsonplaceholder.typicode.com/users";
+const divElement = document.getElementById("userData");
+const subElement = document.createElement("ol");
+divElement.appendChild(subElement);
+
+fetch(URL).then(response => response.json()).then(data => {
+    data.map(element => {
+        const liElement = document.createElement("li");
+        subElement.appendChild(liElement);
+        liElement.textContent = element.name;
+    });
+})
+
+
